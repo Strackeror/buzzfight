@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhnwxtdnnlwtq"]
+[gd_scene load_steps=7 format=3 uid="uid://dhnwxtdnnlwtq"]
 
+[ext_resource type="Script" path="res://Units/bee.gd" id="1_m564d"]
 [ext_resource type="Texture2D" uid="uid://l5anyiouptcw" path="res://Units/Bee_Albedo_Transparency.0003.png" id="2_lkb2d"]
-[ext_resource type="ArrayMesh" uid="uid://d3grun2stwfqo" path="res://Units/Bee.0003.obj" id="3_ef165"]
+[ext_resource type="ArrayMesh" uid="uid://4yrgiplb3u1m" path="res://Units/Bee.0004.obj" id="3_4hew3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xydle"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_robos"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.242
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_lkb2d")
 
@@ -14,19 +15,24 @@ radius = 5.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3vi8"]
 
-[node name="Bee" type="Node3D"]
+[node name="Bee" type="Node3D" node_paths=PackedStringArray("detector")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0, 0, 0)
+script = ExtResource("1_m564d")
+detector = NodePath("Detector")
+separation_factor = 5.0
+alignment_factor = 0.01
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.245, 0, -2.14186e-08, 0, 0.245, 0, 2.14186e-08, 0, -0.245, 0.00630047, 0.139559, 0.0753458)
-material_override = SubResource("StandardMaterial3D_xydle")
-mesh = ExtResource("3_ef165")
+material_override = SubResource("StandardMaterial3D_robos")
+mesh = ExtResource("3_4hew3")
 
-[node name="Ally detector" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164032, -4.76837e-07, 0.00952911)
+[node name="Detector" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0227547, -0.0154161, -0.00633526)
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ally detector"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detector"]
 shape = SubResource("SphereShape3D_qrya2")
 
 [node name="Body" type="Area3D" parent="."]

@@ -1,19 +1,24 @@
-extends MeshInstance3D
+extends Node3D
 
 @export var cam: Camera3D = null
+@export var coord: Coordinator = null
 @export var spawn: PackedScene = null
 
+
 var active: bool = true
+var spawned_list: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 func spawn_instance() -> void:
-	var spawned: Node3D = spawn.instantiate()
-	add_sibling(spawned)
+	var spawned: Bee = spawn.instantiate()
 	spawned.transform = self.transform
-
+	spawned.velocity = Vector3.FORWARD
+	spawned.coord = coord
+	print(spawned)
+	add_sibling(spawned)
 
 
 const RAY_LENGTH = 1000.0;
@@ -27,7 +32,12 @@ func _process(_delta: float) -> void:
 	var intersect := space_state.intersect_ray(query)
 	active = intersect != null
 	if intersect:
-		self.position = intersect["position"]
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		self.position = intersect["position"] + Vector3.UP * 2
+	
+	
+func _input(event: InputEvent) -> void:
+	var mouse_event:= event as InputEventMouseButton
+	if !mouse_event:
+		return
+	if mouse_event.button_index == 1 && mouse_event.pressed:
 		spawn_instance()
-
