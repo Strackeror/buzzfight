@@ -10,6 +10,14 @@ alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_lnusm")
 
 [node name="Bee" instance=ExtResource("1_soj83")]
+threat = 1.0
+max_speed = 12.0
+cohesion_factor = 1.0
+target_factor = 1.0
+center = Vector3(0, 0, 0)
+center_distance = 10.0
+centering_factor = 0.1
+team = 0
 
 [node name="MeshInstance3D" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_75wjn")

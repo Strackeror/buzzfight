@@ -32,11 +32,10 @@ func _process(_delta: float) -> void:
 	var intersect := space_state.intersect_ray(query)
 	active = intersect != null
 	if intersect:
-		self.position = intersect["position"] + Vector3.UP * 2
-	
+		self.position = intersect["position"]
 	
 func _input(event: InputEvent) -> void:
-	var mouse_event:= event as InputEventMouseButton
+	var mouse_event := event as InputEventMouseButton
 	if !mouse_event:
 		return
 	if mouse_event.button_index == 1 && mouse_event.pressed:

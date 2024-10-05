@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://jt4rggp6n54m"]
+[gd_scene load_steps=15 format=3 uid="uid://jt4rggp6n54m"]
 
 [ext_resource type="Texture2D" uid="uid://bhx8xkkepyd6x" path="res://Texture/meadow_2_2k_blured.png" id="1_6241y"]
 [ext_resource type="Script" path="res://free_look_camera.gd" id="2_085e3"]
 [ext_resource type="Script" path="res://click.gd" id="2_issfv"]
 [ext_resource type="PackedScene" uid="uid://dhnwxtdnnlwtq" path="res://Units/Bee.tscn" id="3_chp2v"]
-[ext_resource type="ArrayMesh" uid="uid://kil4bsnnfq15" path="res://Units/SwarmFight_ENV01.0003.obj" id="5_jayab"]
 [ext_resource type="Script" path="res://team_coordinator.gd" id="6_xgdn4"]
+[ext_resource type="PackedScene" uid="uid://diiaoxtf66fke" path="res://Env/Export_ENV01.0002/SwarmFight_ENV01.0008.blend" id="7_r0nmv"]
 [ext_resource type="PackedScene" uid="uid://c2stdkc1tkggk" path="res://Units/BadBee.tscn" id="7_r88s4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ubtvn"]
@@ -23,8 +23,16 @@ ambient_light_energy = 0.16
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mf1q6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jec6"]
+transparency = 1
+albedo_color = Color(0.39, 0.918667, 1, 0.0705882)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_337uw"]
+material = SubResource("StandardMaterial3D_0jec6")
+size = Vector2(20, 15)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwhtb"]
-size = Vector3(500, 0, 500)
+size = Vector3(20, 0, 15)
 
 [node name="Base3d" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161743, 1.90735e-06, -0.0341358)
@@ -37,8 +45,9 @@ sensitivity = 10.0
 default_velocity = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.721664, -0.296415, 0.625572, 0, 0.903687, 0.428194, -0.692244, -0.309012, 0.652158, 34.845, 3.90357, 40.5642)
+transform = Transform3D(-0.247473, 0.414875, -0.875577, 4.38393e-09, 0.903687, 0.428194, 0.968895, 0.105966, -0.223638, 34.845, 3.90357, 40.5642)
 shadow_enabled = true
+directional_shadow_max_distance = 302.5
 
 [node name="Cursor" type="MeshInstance3D" parent="." node_paths=PackedStringArray("cam", "coord")]
 transform = Transform3D(1, 0, 0, 0, 0.999924, 0.0123392, 0, -0.0123392, 0.999924, 0.230747, 0.396667, 13.4829)
@@ -48,44 +57,47 @@ cam = NodePath("../Camera3D")
 coord = NodePath("../TeamCoordinator")
 spawn = ExtResource("3_chp2v")
 
-[node name="Placement Plane" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Placement Plane"]
-shape = SubResource("BoxShape3D_nwhtb")
-
-[node name="SwarmFightEnv01_0003" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.102976, -0.860445, -20.6709)
-mesh = ExtResource("5_jayab")
-
 [node name="TeamCoordinator" type="Node3D" parent="."]
 script = ExtResource("6_xgdn4")
 
 [node name="Bee" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 1.95169, -0.963735)
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 1.95169, -14.2003)
 team = 1
 coord = NodePath("../TeamCoordinator")
 
 [node name="Bee2" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 3.36484, 1.95169, 1.04014)
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 3.36484, 1.95169, -12.1964)
 team = 1
 coord = NodePath("../TeamCoordinator")
 
 [node name="Bee3" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 2.44444, 1.0657)
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 2.44444, -12.1708)
 team = 1
 coord = NodePath("../TeamCoordinator")
 
 [node name="Bee4" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.5496, 1.95169, -0.963735)
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.5496, 1.95169, -14.2003)
 team = 1
 coord = NodePath("../TeamCoordinator")
 
 [node name="Bee5" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 8.27929, 1.95169, 0.718722)
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 8.27929, 1.95169, -12.5178)
 team = 1
 coord = NodePath("../TeamCoordinator")
 
 [node name="Bee6" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.76515, 1.7027, 2.69844)
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.76515, 1.7027, -10.5381)
 team = 1
 coord = NodePath("../TeamCoordinator")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.37055, 0, 0, 0, 1, 0, 0, 0, 2.00591, 0.0118084, -0.0147629, 15.039)
+mesh = SubResource("PlaneMesh_337uw")
+
+[node name="Placement Plane" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Placement Plane"]
+shape = SubResource("BoxShape3D_nwhtb")
+
+[node name="SwarmFight_ENV01_0008" parent="." instance=ExtResource("7_r0nmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6491, -0.25898, 0.0169678)

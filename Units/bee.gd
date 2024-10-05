@@ -11,11 +11,7 @@ class_name Bee
 @export var cohesion_factor := 1.0
 @export var target_factor := 1.0
 
-@export var y_min := -3.0
-@export var y_max := 8.0
-@export var y_factor := 0
-
-@export var center:= Vector3.ZERO
+@export var center := Vector3.ZERO
 @export var center_distance := 10.0
 @export var centering_factor := 0.1
 
@@ -24,7 +20,7 @@ class_name Bee
 
 
 var velocity := Vector3.ZERO
-var stun := 0.0
+var stun_time := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,19 +28,29 @@ func _ready() -> void:
 	coord.register(self)
 
 func kill():
+	state = State.Dead
 	queue_free()
 	coord.unregister(self)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func stun():
+	state = State.Stunned
+	stun_time = 1.0
+
+func start():
+	state = State.Active
+
+
+enum State {
+	Placed,
+	Active,
+	Stunned,
+	Dead,
+}
+
+var state := State.Placed
+
+func process_active(delta: float):
 	var collision_nodes = detector.get_overlapping_areas().map(func(t): return t.get_parent())
-
-	if !is_instance_valid(target) || target.stun > 0:
-		target = null
-	if target == null:
-		coord.select_random_target(self)
-	
-
 	var bees_around: Array[Bee]
 	bees_around.assign(
 		collision_nodes
@@ -55,64 +61,66 @@ func _process(delta: float) -> void:
 				)
 			)
 	)
-
-	if stun <= 0:
-		if bees_around.size() > 0:
-			var separation_velocity := Vector3.ZERO
-			var alignment_velocity := Vector3.ZERO
-			var cohesion_position := Vector3.ZERO
-
-			for other in bees_around:
-				var diff = position - other.position
-				separation_velocity += diff.normalized() / diff.length()
-				alignment_velocity += other.velocity
-				cohesion_position += other.position
-
-			separation_velocity /= bees_around.size()
-			separation_velocity *= separation_factor
-
-			alignment_velocity /= bees_around.size()
-			alignment_velocity *= alignment_factor
-
-			cohesion_position /= bees_around.size()
-			var cohesion_velocity := (cohesion_position - position).normalized() * cohesion_factor;
-
-			velocity += separation_velocity + alignment_velocity + cohesion_velocity
 	
-		if position.y < y_min:
-			velocity += Vector3.UP * y_factor
-		if position.y < y_max:
-			velocity += Vector3.DOWN * y_factor
-		# Stay around center
-		var center_diff = (center - position)
-		if center_diff.length() > center_distance:
-			velocity += (center_diff).normalized() * centering_factor
+	if !is_instance_valid(target) || target.stun_time > 0:
+		target = null
+	if target == null:
+		coord.select_random_target(self)
 
-		# Stay around center
-		# var center_dir = (center - global_position)
-		# DebugDraw.draw_line_3d(position, position + center_dir.normalized(), Color(1, 1, 0))
-		# velocity += center_dir.normalized() * centering_factor * 50
+	if bees_around.size() > 0:
+		var separation_velocity := Vector3.ZERO
+		var alignment_velocity := Vector3.ZERO
+		var cohesion_position := Vector3.ZERO
 
-		if target:
-			var diff := (target.position - position)
-			var target_velocity := (target.position - position).normalized() * target_factor
-			velocity += target_velocity
-			
-			if diff.length_squared() < 1 && target is Bee:
-				target.stun = 1.0
-				target = null
+		for other in bees_around:
+			var diff = position - other.position
+			if diff != Vector3.ZERO:
+				separation_velocity += diff.normalized() / diff.length()
+			alignment_velocity += other.velocity
+			cohesion_position += other.position
 
-		if velocity.length() > max_speed:
-			velocity *= max_speed / velocity.length()
-	else:
-		stun -= delta
-		self.velocity = self.velocity + Vector3.DOWN * delta * 100
-		if stun <= 0:
-			kill()
-			stun = 1.0
-			
+		separation_velocity /= bees_around.size()
+		separation_velocity *= separation_factor
 
+		alignment_velocity /= bees_around.size()
+		alignment_velocity *= alignment_factor
+
+		cohesion_position /= bees_around.size()
+		var cohesion_velocity := (cohesion_position - position).normalized() * cohesion_factor;
+
+		velocity += separation_velocity + alignment_velocity + cohesion_velocity
+
+	# Stay around center
+	var center_diff = (center - position)
+	if center_diff.length() > center_distance:
+		velocity += (center_diff).normalized() * centering_factor
+
+	if target:
+		var diff := (target.position - position)
+		var target_velocity := (target.position - position).normalized() * target_factor
+		velocity += target_velocity
+		if diff.length_squared() < 1:
+			target.stun()
+
+	if velocity.length() > max_speed:
+		velocity *= max_speed / velocity.length()
 
 	self.position += velocity * delta
 	self.basis = Basis.looking_at(velocity)
-	self.rotate_z(stun * PI * 5)
+	self.rotate_z(stun_time * PI * 5)
+
+func process_stunned(delta: float):
+	stun_time -= delta
+	self.velocity = self.velocity + Vector3.DOWN * delta * 100
+	self.position += velocity * delta
+	if stun_time <= 0:
+		kill()
+		stun_time = 1.0
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	match state:
+		State.Active: process_active(delta)
+		State.Stunned: process_stunned(delta)
+
+
