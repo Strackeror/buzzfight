@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhnwxtdnnlwtq"]
+
+[ext_resource type="Texture2D" uid="uid://l5anyiouptcw" path="res://Units/Bee_Albedo_Transparency.0003.png" id="2_lkb2d"]
+[ext_resource type="ArrayMesh" uid="uid://d3grun2stwfqo" path="res://Units/Bee.0003.obj" id="3_ef165"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xydle"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_lkb2d")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qrya2"]
+radius = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3vi8"]
+
+[node name="Bee" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.245, 0, -2.14186e-08, 0, 0.245, 0, 2.14186e-08, 0, -0.245, 0.00630047, 0.139559, 0.0753458)
+material_override = SubResource("StandardMaterial3D_xydle")
+mesh = ExtResource("3_ef165")
+
+[node name="Ally detector" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164032, -4.76837e-07, 0.00952911)
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ally detector"]
+shape = SubResource("SphereShape3D_qrya2")
+
+[node name="Body" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_b3vi8")
