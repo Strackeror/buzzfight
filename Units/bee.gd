@@ -12,7 +12,7 @@ class_name Bee
 @export var target_factor := 1.0
 
 @export var center := Vector3.ZERO
-@export var center_distance := 10.0
+@export var center_distance := 15.0
 @export var centering_factor := 0.1
 
 @export var team = 0
@@ -24,8 +24,7 @@ var stun_time := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(coord)
-	coord.register(self)
+	pass
 
 func kill():
 	state = State.Dead
@@ -76,7 +75,7 @@ func process_active(delta: float):
 			var diff = position - other.position
 			if diff != Vector3.ZERO:
 				separation_velocity += diff.normalized() / diff.length()
-			alignment_velocity += other.velocity
+			alignment_velocity += other.velocity.normalized()
 			cohesion_position += other.position
 
 		separation_velocity /= bees_around.size()
@@ -88,12 +87,19 @@ func process_active(delta: float):
 		cohesion_position /= bees_around.size()
 		var cohesion_velocity := (cohesion_position - position).normalized() * cohesion_factor;
 
+		DebugDraw.draw_line_3d(global_position, global_position + separation_velocity, Color(1, 0, 0))
+		DebugDraw.draw_line_3d(global_position, global_position + alignment_velocity, Color(0, 1, 0))
+		DebugDraw.draw_line_3d(global_position, global_position + cohesion_velocity, Color(0, 0, 1))
+
 		velocity += separation_velocity + alignment_velocity + cohesion_velocity
 
 	# Stay around center
 	var center_diff = (center - position)
 	if center_diff.length() > center_distance:
-		velocity += (center_diff).normalized() * centering_factor
+		var outside_dist = center_diff.length() - center_distance
+		var centering_velocity = (center_diff.normalized() * centering_factor * outside_dist)
+		DebugDraw.draw_line_3d(global_position, global_position + centering_velocity, Color(1, 0, 1))
+		velocity += centering_velocity
 
 	if target:
 		var diff := (target.position - position)
@@ -122,5 +128,3 @@ func _process(delta: float) -> void:
 	match state:
 		State.Active: process_active(delta)
 		State.Stunned: process_stunned(delta)
-
-

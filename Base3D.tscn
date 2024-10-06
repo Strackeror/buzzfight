@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bhx8xkkepyd6x" path="res://Texture/meadow_2_2k_blured.png" id="1_6241y"]
 [ext_resource type="Script" path="res://free_look_camera.gd" id="2_085e3"]
-[ext_resource type="Script" path="res://click.gd" id="2_issfv"]
 [ext_resource type="PackedScene" uid="uid://dhnwxtdnnlwtq" path="res://Units/Bee.tscn" id="3_chp2v"]
+[ext_resource type="PackedScene" uid="uid://crfda2rbexeo5" path="res://Units/Bumblebee.tscn" id="5_b5whs"]
 [ext_resource type="Script" path="res://team_coordinator.gd" id="6_xgdn4"]
 [ext_resource type="PackedScene" uid="uid://diiaoxtf66fke" path="res://Env/Export_ENV01.0002/SwarmFight_ENV01.0008.blend" id="7_r0nmv"]
 [ext_resource type="PackedScene" uid="uid://c2stdkc1tkggk" path="res://Units/BadBee.tscn" id="7_r88s4"]
@@ -21,8 +21,6 @@ ambient_light_color = Color(0.451636, 0.655076, 0.793795, 1)
 ambient_light_sky_contribution = 0.19
 ambient_light_energy = 0.16
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_mf1q6"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jec6"]
 transparency = 1
 albedo_color = Color(0.39, 0.918667, 1, 0.0705882)
@@ -33,6 +31,10 @@ size = Vector2(20, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwhtb"]
 size = Vector3(20, 0, 15)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s5sui"]
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Base3d" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161743, 1.90735e-06, -0.0341358)
@@ -45,59 +47,77 @@ sensitivity = 10.0
 default_velocity = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.247473, 0.414875, -0.875577, 4.38393e-09, 0.903687, 0.428194, 0.968895, 0.105966, -0.223638, 34.845, 3.90357, 40.5642)
+transform = Transform3D(-0.285936, 0.904979, -0.315047, 0.170048, 0.371476, 0.912737, 0.94304, 0.207412, -0.260109, 34.845, 3.90357, 40.5642)
 shadow_enabled = true
 directional_shadow_max_distance = 302.5
 
-[node name="Cursor" type="MeshInstance3D" parent="." node_paths=PackedStringArray("cam", "coord")]
-transform = Transform3D(1, 0, 0, 0, 0.999924, 0.0123392, 0, -0.0123392, 0.999924, 0.230747, 0.396667, 13.4829)
-mesh = SubResource("CapsuleMesh_mf1q6")
-script = ExtResource("2_issfv")
-cam = NodePath("../Camera3D")
-coord = NodePath("../TeamCoordinator")
-spawn = ExtResource("3_chp2v")
-
-[node name="TeamCoordinator" type="Node3D" parent="."]
+[node name="TeamCoordinator" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 script = ExtResource("6_xgdn4")
+cam = NodePath("../Camera3D")
+spawn_list = Array[PackedScene]([ExtResource("3_chp2v"), ExtResource("5_b5whs")])
 
-[node name="Bee" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 1.95169, -14.2003)
-team = 1
-coord = NodePath("../TeamCoordinator")
-
-[node name="Bee2" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 3.36484, 1.95169, -12.1964)
-team = 1
-coord = NodePath("../TeamCoordinator")
-
-[node name="Bee3" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 2.44444, -12.1708)
-team = 1
-coord = NodePath("../TeamCoordinator")
-
-[node name="Bee4" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.5496, 1.95169, -14.2003)
-team = 1
-coord = NodePath("../TeamCoordinator")
-
-[node name="Bee5" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 8.27929, 1.95169, -12.5178)
-team = 1
-coord = NodePath("../TeamCoordinator")
-
-[node name="Bee6" parent="." node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.76515, 1.7027, -10.5381)
-team = 1
-coord = NodePath("../TeamCoordinator")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlacementPlane" type="MeshInstance3D" parent="TeamCoordinator"]
 transform = Transform3D(2.37055, 0, 0, 0, 1, 0, 0, 0, 2.00591, 0.0118084, -0.0147629, 15.039)
 mesh = SubResource("PlaneMesh_337uw")
+skeleton = NodePath("../..")
 
-[node name="Placement Plane" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="Placement Plane" type="StaticBody3D" parent="TeamCoordinator/PlacementPlane"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Placement Plane"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TeamCoordinator/PlacementPlane/Placement Plane"]
 shape = SubResource("BoxShape3D_nwhtb")
 
-[node name="SwarmFight_ENV01_0008" parent="." instance=ExtResource("7_r0nmv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6491, -0.25898, 0.0169678)
+[node name="Cursor" type="Node3D" parent="TeamCoordinator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0189056, -0.067688, -0.075386)
+
+[node name="Environment" parent="." instance=ExtResource("7_r0nmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.104, -0.25898, 0.0169678)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Team Count" type="Label" parent="CanvasLayer"]
+offset_left = 39.0
+offset_top = 33.0
+offset_right = 108.0
+offset_bottom = 69.0
+text = "Toast"
+label_settings = SubResource("LabelSettings_s5sui")
+
+[node name="BeeGroup" type="Node3D" parent="."]
+visible = false
+
+[node name="Bee" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 1.95169, -14.2003)
+alignment_factor = 0.01
+centering_factor = 0.1
+coord = NodePath("../../TeamCoordinator")
+
+[node name="Bee2" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 3.36484, 1.95169, -12.1964)
+alignment_factor = 0.01
+centering_factor = 0.1
+coord = NodePath("../../TeamCoordinator")
+
+[node name="Bee3" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 2.44444, -12.1708)
+alignment_factor = 0.01
+centering_factor = 0.1
+coord = NodePath("../../TeamCoordinator")
+
+[node name="Bee4" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.5496, 1.95169, -14.2003)
+alignment_factor = 0.01
+centering_factor = 0.1
+coord = NodePath("../../TeamCoordinator")
+
+[node name="Bee5" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 8.27929, 1.95169, -12.5178)
+alignment_factor = 0.01
+centering_factor = 0.1
+coord = NodePath("../../TeamCoordinator")
+
+[node name="Bee6" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
+transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.76515, 1.7027, -10.5381)
+alignment_factor = 0.01
+centering_factor = 0.1
+coord = NodePath("../../TeamCoordinator")
