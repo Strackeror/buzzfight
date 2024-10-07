@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd5ojvw1x6ey6"]
+
+[ext_resource type="PackedScene" uid="uid://n377xwp2wssy" path="res://Units/Prefabs/Bee/Bee.tscn" id="1_w4x84"]
+[ext_resource type="PackedScene" uid="uid://c6jj45hxye4um" path="res://Units/Imports/Bee/Bee_Enemy.0003.glb" id="2_15mgf"]
+
+[node name="Bee2" instance=ExtResource("1_w4x84")]
+team = 1
+
+[node name="Scene" parent="." index="0" instance=ExtResource("2_15mgf")]
+transform = Transform3D(-0.35, 0, -3.0598e-08, 0, 0.35, 0, 3.0598e-08, 0, -0.35, 0, 0, 0)

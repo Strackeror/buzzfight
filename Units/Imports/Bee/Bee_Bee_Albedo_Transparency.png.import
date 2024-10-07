@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l5anyiouptcw"
-path.s3tc="res://.godot/imported/Bee_Albedo_Transparency.0003.png-14cea1e8428c5dfd3fdaf1f05f263770.s3tc.ctex"
+uid="uid://ds4qcr5ds8a5b"
+path.s3tc="res://.godot/imported/Bee_Bee_Albedo_Transparency.png-75ce0f465ddb48ecd13becb71b61f501.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "780542f189ab5922d29d640cd83893e9"
+}
 
 [deps]
 
-source_file="res://Units/Bee_Albedo_Transparency.0003.png"
-dest_files=["res://.godot/imported/Bee_Albedo_Transparency.0003.png-14cea1e8428c5dfd3fdaf1f05f263770.s3tc.ctex"]
+source_file="res://Units/Imports/Bee/Bee_Bee_Albedo_Transparency.png"
+dest_files=["res://.godot/imported/Bee_Bee_Albedo_Transparency.png-75ce0f465ddb48ecd13becb71b61f501.s3tc.ctex"]
 
 [params]
 

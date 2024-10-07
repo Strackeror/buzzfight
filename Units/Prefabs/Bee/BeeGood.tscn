@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bshy3bteghyv6"]
+
+[ext_resource type="PackedScene" uid="uid://n377xwp2wssy" path="res://Units/Prefabs/Bee/Bee.tscn" id="1_eskvu"]
+[ext_resource type="PackedScene" uid="uid://d3srjx15hurtk" path="res://Units/Imports/Bee/Bee.0003.glb" id="2_oi1no"]
+
+[node name="Bee2" instance=ExtResource("1_eskvu")]
+
+[node name="Scene" parent="." index="0" instance=ExtResource("2_oi1no")]
+transform = Transform3D(-0.34, 0, -2.97237e-08, 0, 0.34, 0, 2.97237e-08, 0, -0.34, 0, 0, 0)

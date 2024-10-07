@@ -1,12 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://jt4rggp6n54m"]
+[gd_scene load_steps=19 format=3 uid="uid://jt4rggp6n54m"]
 
 [ext_resource type="Texture2D" uid="uid://bhx8xkkepyd6x" path="res://Texture/meadow_2_2k_blured.png" id="1_6241y"]
 [ext_resource type="Script" path="res://free_look_camera.gd" id="2_085e3"]
-[ext_resource type="PackedScene" uid="uid://dhnwxtdnnlwtq" path="res://Units/Bee.tscn" id="3_chp2v"]
-[ext_resource type="PackedScene" uid="uid://crfda2rbexeo5" path="res://Units/Bumblebee.tscn" id="5_b5whs"]
-[ext_resource type="Script" path="res://team_coordinator.gd" id="6_xgdn4"]
+[ext_resource type="PackedScene" uid="uid://bshy3bteghyv6" path="res://Units/Prefabs/Bee/BeeGood.tscn" id="4_hhxht"]
+[ext_resource type="PackedScene" uid="uid://bxaixnjcp7aak" path="res://Units/Prefabs/Bumblebee/BumbleBeeGood.tscn" id="5_2lvki"]
+[ext_resource type="PackedScene" uid="uid://b3lgjt11p4xg2" path="res://Groups/SingleBee.tscn" id="6_fdwi7"]
+[ext_resource type="PackedScene" uid="uid://beo121x85tunw" path="res://Units/Prefabs/Wasp/WaspGood.tscn" id="6_fjdlm"]
+[ext_resource type="Script" path="res://coordinator.gd" id="6_xgdn4"]
 [ext_resource type="PackedScene" uid="uid://diiaoxtf66fke" path="res://Env/Export_ENV01.0002/SwarmFight_ENV01.0008.blend" id="7_r0nmv"]
-[ext_resource type="PackedScene" uid="uid://c2stdkc1tkggk" path="res://Units/BadBee.tscn" id="7_r88s4"]
+[ext_resource type="Texture2D" uid="uid://cdkwbq05evwjh" path="res://UI/UI_Compartement.png" id="9_tjoet"]
+[ext_resource type="Texture2D" uid="uid://dlowu3vl6bsbb" path="res://UI/Button_Bee.png" id="10_4mw8d"]
+[ext_resource type="Texture2D" uid="uid://s0r0f8d8cegp" path="res://UI/Button_BumbleBee.png" id="11_4mqri"]
+[ext_resource type="Texture2D" uid="uid://b72307y8xqnyi" path="res://UI/Button_Wasp.png" id="12_gxhoa"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ubtvn"]
 panorama = ExtResource("1_6241y")
@@ -32,10 +37,6 @@ size = Vector2(20, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwhtb"]
 size = Vector3(20, 0, 15)
 
-[sub_resource type="LabelSettings" id="LabelSettings_s5sui"]
-outline_color = Color(0, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 1)
-
 [node name="Base3d" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161743, 1.90735e-06, -0.0341358)
 
@@ -51,23 +52,27 @@ transform = Transform3D(-0.285936, 0.904979, -0.315047, 0.170048, 0.371476, 0.91
 shadow_enabled = true
 directional_shadow_max_distance = 302.5
 
-[node name="TeamCoordinator" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
+[node name="Coordinator" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 script = ExtResource("6_xgdn4")
 cam = NodePath("../Camera3D")
-spawn_list = Array[PackedScene]([ExtResource("3_chp2v"), ExtResource("5_b5whs")])
+spawn_list = Array[PackedScene]([ExtResource("4_hhxht"), ExtResource("5_2lvki"), ExtResource("6_fjdlm")])
+enemy_group_list = Array[PackedScene]([ExtResource("6_fdwi7")])
 
-[node name="PlacementPlane" type="MeshInstance3D" parent="TeamCoordinator"]
+[node name="PlacementPlane" type="MeshInstance3D" parent="Coordinator"]
 transform = Transform3D(2.37055, 0, 0, 0, 1, 0, 0, 0, 2.00591, 0.0118084, -0.0147629, 15.039)
 mesh = SubResource("PlaneMesh_337uw")
 skeleton = NodePath("../..")
 
-[node name="Placement Plane" type="StaticBody3D" parent="TeamCoordinator/PlacementPlane"]
+[node name="Placement Plane" type="StaticBody3D" parent="Coordinator/PlacementPlane"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TeamCoordinator/PlacementPlane/Placement Plane"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coordinator/PlacementPlane/Placement Plane"]
 shape = SubResource("BoxShape3D_nwhtb")
 
-[node name="Cursor" type="Node3D" parent="TeamCoordinator"]
+[node name="Cursor" type="Node3D" parent="Coordinator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0189056, -0.067688, -0.075386)
+
+[node name="EnemyGroupOrigin" type="Node3D" parent="Coordinator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
 
 [node name="Environment" parent="." instance=ExtResource("7_r0nmv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.104, -0.25898, 0.0169678)
@@ -75,49 +80,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.104, -0.25898, 0.0169678)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Team Count" type="Label" parent="CanvasLayer"]
-offset_left = 39.0
-offset_top = 33.0
-offset_right = 108.0
-offset_bottom = 69.0
-text = "Toast"
-label_settings = SubResource("LabelSettings_s5sui")
+[node name="UiCompartement" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_tjoet")
 
-[node name="BeeGroup" type="Node3D" parent="."]
-visible = false
+[node name="ButtonBee" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(410, 598)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_4mw8d")
 
-[node name="Bee" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 1.95169, -14.2003)
-alignment_factor = 0.01
-centering_factor = 0.1
-coord = NodePath("../../TeamCoordinator")
+[node name="ButtonBumbleBee" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(575.3, 597.3)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_4mqri")
 
-[node name="Bee2" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 3.36484, 1.95169, -12.1964)
-alignment_factor = 0.01
-centering_factor = 0.1
-coord = NodePath("../../TeamCoordinator")
-
-[node name="Bee3" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 4.99222, 2.44444, -12.1708)
-alignment_factor = 0.01
-centering_factor = 0.1
-coord = NodePath("../../TeamCoordinator")
-
-[node name="Bee4" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.5496, 1.95169, -14.2003)
-alignment_factor = 0.01
-centering_factor = 0.1
-coord = NodePath("../../TeamCoordinator")
-
-[node name="Bee5" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 8.27929, 1.95169, -12.5178)
-alignment_factor = 0.01
-centering_factor = 0.1
-coord = NodePath("../../TeamCoordinator")
-
-[node name="Bee6" parent="BeeGroup" node_paths=PackedStringArray("coord") instance=ExtResource("7_r88s4")]
-transform = Transform3D(-0.916559, 0, -0.398284, 0, 0.999355, 0, 0.398284, 0, -0.916559, 6.76515, 1.7027, -10.5381)
-alignment_factor = 0.01
-centering_factor = 0.1
-coord = NodePath("../../TeamCoordinator")
+[node name="ButtonWasp" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(746.3, 597.3)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_gxhoa")

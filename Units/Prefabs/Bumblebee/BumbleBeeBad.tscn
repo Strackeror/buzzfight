@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0evccu3pmnlw"]
+
+[ext_resource type="PackedScene" uid="uid://dpyuqpsjt5t56" path="res://Units/Prefabs/Bumblebee/BumbleBee.tscn" id="1_6yd42"]
+[ext_resource type="PackedScene" uid="uid://vj3o3dul5erq" path="res://Units/Imports/Bumblebee/Bumblebee_Enemy.0001.glb" id="3_xxx2c"]
+
+[node name="Bee" instance=ExtResource("1_6yd42")]
+max_speed = 5.0
+team = 1
+
+[node name="Scene" parent="." index="0" instance=ExtResource("3_xxx2c")]
+transform = Transform3D(-0.35, 0, -3.0598e-08, 0, 0.35, 0, 3.0598e-08, 0, -0.35, 0, 0, 0)

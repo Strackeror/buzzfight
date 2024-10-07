@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://n377xwp2wssy"]
+
+[ext_resource type="PackedScene" uid="uid://dhnwxtdnnlwtq" path="res://Units/Bug.tscn" id="1_i0r1t"]
+[ext_resource type="Script" path="res://Units/Prefabs/Bee/bee.gd" id="2_2de7l"]
+
+[node name="Bee2" instance=ExtResource("1_i0r1t")]
+script = ExtResource("2_2de7l")
+separation_factor = 5.0
+alignment_factor = 0.1
+cohesion_factor = 1.0
