@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhng2b846kfpc"]
+
+[ext_resource type="PackedScene" uid="uid://c0evccu3pmnlw" path="res://Units/Prefabs/Bumblebee/BumbleBeeBad.tscn" id="1_sxj0k"]
+[ext_resource type="PackedScene" uid="uid://bn6fjovhjgfuj" path="res://Units/Prefabs/Wasp/WaspBad.tscn" id="2_i56i4"]
+
+[node name="10Bees" type="Node3D"]
+
+[node name="Bee" parent="." instance=ExtResource("1_sxj0k")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 5.40085, 0, -0.269773)
+
+[node name="Bee2" parent="." instance=ExtResource("1_sxj0k")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, -3.94208, 0, -0.408734)
+
+[node name="Bee3" parent="." instance=ExtResource("1_sxj0k")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 2.05919, 0, -0.0758457)
+
+[node name="Bee4" parent="." instance=ExtResource("1_sxj0k")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, -1.04536, 0, -0.365651)
+
+[node name="Bee5" parent="." instance=ExtResource("2_i56i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58076, 2.00724, -9.8483)
+attack = 6.0
+
+[node name="Bee6" parent="." instance=ExtResource("2_i56i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52999, 2.29642, -10.2868)
+attack = 6.0
+
+[node name="Bee7" parent="." instance=ExtResource("2_i56i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077346, -3.09835, -10.9567)
+attack = 6.0

@@ -1,17 +1,36 @@
-[gd_scene load_steps=19 format=3 uid="uid://jt4rggp6n54m"]
+[gd_scene load_steps=52 format=3 uid="uid://jt4rggp6n54m"]
 
 [ext_resource type="Texture2D" uid="uid://bhx8xkkepyd6x" path="res://Texture/meadow_2_2k_blured.png" id="1_6241y"]
 [ext_resource type="Script" path="res://free_look_camera.gd" id="2_085e3"]
-[ext_resource type="PackedScene" uid="uid://bshy3bteghyv6" path="res://Units/Prefabs/Bee/BeeGood.tscn" id="4_hhxht"]
-[ext_resource type="PackedScene" uid="uid://bxaixnjcp7aak" path="res://Units/Prefabs/Bumblebee/BumbleBeeGood.tscn" id="5_2lvki"]
-[ext_resource type="PackedScene" uid="uid://b3lgjt11p4xg2" path="res://Groups/SingleBee.tscn" id="6_fdwi7"]
-[ext_resource type="PackedScene" uid="uid://beo121x85tunw" path="res://Units/Prefabs/Wasp/WaspGood.tscn" id="6_fjdlm"]
+[ext_resource type="Script" path="res://Resources/spawn_bug.gd" id="2_gpwaw"]
+[ext_resource type="PackedScene" uid="uid://bshy3bteghyv6" path="res://Units/Prefabs/Bee/BeeGood.tscn" id="3_1uocd"]
+[ext_resource type="PackedScene" uid="uid://bxaixnjcp7aak" path="res://Units/Prefabs/Bumblebee/BumbleBeeGood.tscn" id="4_eccfv"]
+[ext_resource type="PackedScene" uid="uid://beo121x85tunw" path="res://Units/Prefabs/Wasp/WaspGood.tscn" id="5_hbntx"]
+[ext_resource type="Script" path="res://Resources/enemy_group.gd" id="6_65rgo"]
 [ext_resource type="Script" path="res://coordinator.gd" id="6_xgdn4"]
-[ext_resource type="PackedScene" uid="uid://diiaoxtf66fke" path="res://Env/Export_ENV01.0002/SwarmFight_ENV01.0008.blend" id="7_r0nmv"]
+[ext_resource type="PackedScene" uid="uid://bpsuo2kmuowmu" path="res://Groups/LotsBees.tscn" id="7_gb2cu"]
+[ext_resource type="PackedScene" uid="uid://b3lgjt11p4xg2" path="res://Groups/SingleBee.tscn" id="7_td8dg"]
+[ext_resource type="PackedScene" uid="uid://xhavmh5dpgj5" path="res://Groups/SingleBumbleBee.tscn" id="8_mwv62"]
+[ext_resource type="PackedScene" uid="uid://brqptqfe5ilgj" path="res://Groups/SingleWasp.tscn" id="9_5d0pu"]
 [ext_resource type="Texture2D" uid="uid://cdkwbq05evwjh" path="res://UI/UI_Compartement.png" id="9_tjoet"]
+[ext_resource type="Texture2D" uid="uid://dcsslij4efi5h" path="res://Texture/Currency.png" id="10_3m2xv"]
 [ext_resource type="Texture2D" uid="uid://dlowu3vl6bsbb" path="res://UI/Button_Bee.png" id="10_4mw8d"]
+[ext_resource type="PackedScene" uid="uid://cl1mujepq3ctn" path="res://Groups/10Bees.tscn" id="10_8bf7a"]
 [ext_resource type="Texture2D" uid="uid://s0r0f8d8cegp" path="res://UI/Button_BumbleBee.png" id="11_4mqri"]
+[ext_resource type="PackedScene" uid="uid://bj571ebhsm1a8" path="res://Groups/2Wasps.tscn" id="11_x3qmg"]
 [ext_resource type="Texture2D" uid="uid://b72307y8xqnyi" path="res://UI/Button_Wasp.png" id="12_gxhoa"]
+[ext_resource type="Texture2D" uid="uid://bviuvkgs0cpxj" path="res://Texture/Controls.png" id="12_utwod"]
+[ext_resource type="PackedScene" uid="uid://boi7gruu24jox" path="res://Groups/20Bees2Bumble.tscn" id="13_56mm1"]
+[ext_resource type="PackedScene" uid="uid://ddp6fly3vp1j4" path="res://Groups/10Bees2Bumbles2Wasps.tscn" id="14_06omm"]
+[ext_resource type="PackedScene" uid="uid://bhng2b846kfpc" path="res://Groups/4Bumbles3Waps.tscn" id="15_3ly0e"]
+[ext_resource type="AudioStream" uid="uid://bhk0bcfv6qw17" path="res://Sounds/placementSound.mp3" id="16_2br1e"]
+[ext_resource type="PackedScene" uid="uid://d1n24iy7s2w1q" path="res://Groups/FinalGroup.tscn" id="16_pp77x"]
+[ext_resource type="FontFile" uid="uid://vi37j4jnea48" path="res://Coffee Soda.otf" id="17_8k4vr"]
+[ext_resource type="Texture2D" uid="uid://bh3l2glv7c2qq" path="res://Texture/YOU_WIN.png" id="19_fko6k"]
+[ext_resource type="Texture2D" uid="uid://ghot2x2tvxrs" path="res://Texture/YOU_LOSE.png" id="19_hcnxe"]
+[ext_resource type="Texture2D" uid="uid://bm52ax5kc8t3y" path="res://Texture/continue.png" id="19_t8nxf"]
+[ext_resource type="Texture2D" uid="uid://noxebcxlkmma" path="res://Texture/retry.png" id="22_bi7b0"]
+[ext_resource type="PackedScene" uid="uid://toaop8q17ovs" path="res://Env/SwarmFight_ENV01.0010.glb" id="31_cw7e1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ubtvn"]
 panorama = ExtResource("1_6241y")
@@ -25,6 +44,90 @@ sky = SubResource("Sky_tcg2v")
 ambient_light_color = Color(0.451636, 0.655076, 0.793795, 1)
 ambient_light_sky_contribution = 0.19
 ambient_light_energy = 0.16
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifold"]
+font = ExtResource("17_8k4vr")
+font_size = 50
+outline_size = 12
+outline_color = Color(0.291335, 0.259111, 4.81308e-08, 1)
+
+[sub_resource type="Resource" id="Resource_8ghwu"]
+script = ExtResource("2_gpwaw")
+bug = ExtResource("3_1uocd")
+button = NodePath("../CanvasLayer/Placement/ButtonBee")
+cost = 100
+
+[sub_resource type="Resource" id="Resource_s8mmk"]
+script = ExtResource("2_gpwaw")
+bug = ExtResource("4_eccfv")
+button = NodePath("../CanvasLayer/Placement/ButtonBumbleBee")
+cost = 600
+
+[sub_resource type="Resource" id="Resource_u6yf7"]
+script = ExtResource("2_gpwaw")
+bug = ExtResource("5_hbntx")
+button = NodePath("../CanvasLayer/Placement/ButtonWasp")
+cost = 300
+
+[sub_resource type="Resource" id="Resource_j0hu7"]
+resource_name = "SingleBee"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("7_td8dg")
+allowed_cost = 200
+
+[sub_resource type="Resource" id="Resource_21fkl"]
+resource_name = "SingleBumblebee"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("8_mwv62")
+allowed_cost = 300
+
+[sub_resource type="Resource" id="Resource_kfdyc"]
+resource_name = "SingleWasp"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("9_5d0pu")
+allowed_cost = 300
+
+[sub_resource type="Resource" id="Resource_dyc5a"]
+resource_name = "10Bees"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("10_8bf7a")
+allowed_cost = 600
+
+[sub_resource type="Resource" id="Resource_yn3n6"]
+resource_name = "2Wasps"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("11_x3qmg")
+allowed_cost = 600
+
+[sub_resource type="Resource" id="Resource_pnxhi"]
+resource_name = "10Bees2Bumble"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("13_56mm1")
+allowed_cost = 2100
+
+[sub_resource type="Resource" id="Resource_yo3vf"]
+resource_name = "10Bees2Bumbles2Wasps"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("14_06omm")
+allowed_cost = 2500
+
+[sub_resource type="Resource" id="Resource_gyajr"]
+resource_name = "4Bumble3Wasps"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("15_3ly0e")
+allowed_cost = 2000
+
+[sub_resource type="Resource" id="Resource_bvwi0"]
+resource_name = "LotsBees"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("7_gb2cu")
+allowed_cost = 5000
+
+[sub_resource type="Resource" id="Resource_acqn0"]
+resource_name = "FinalGroup"
+script = ExtResource("6_65rgo")
+enemies = ExtResource("16_pp77x")
+allowed_cost = 10000
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jec6"]
 transparency = 1
@@ -44,19 +147,120 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161743, 1.90735e-06, -0.03
 transform = Transform3D(1, 0, 0, 0, 0.849975, 0.526822, 0, -0.526822, 0.849975, -0.274632, 8.48238, 13.4459)
 environment = SubResource("Environment_7mhp3")
 script = ExtResource("2_085e3")
-sensitivity = 10.0
+sensitivity = null
 default_velocity = 50.0
+speed_scale = null
+boost_speed_multiplier = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.285936, 0.904979, -0.315047, 0.170048, 0.371476, 0.912737, 0.94304, 0.207412, -0.260109, 34.845, 3.90357, 40.5642)
 shadow_enabled = true
 directional_shadow_max_distance = 302.5
 
-[node name="Coordinator" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Placement" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UiCompartement" type="Sprite2D" parent="CanvasLayer/Placement"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_tjoet")
+
+[node name="Controls" type="Sprite2D" parent="CanvasLayer/Placement"]
+position = Vector2(176, 601)
+scale = Vector2(0.2575, 0.2575)
+texture = ExtResource("12_utwod")
+
+[node name="ButtonBee" type="Sprite2D" parent="CanvasLayer/Placement"]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(559, 597)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_4mw8d")
+
+[node name="ButtonBumbleBee" type="Sprite2D" parent="CanvasLayer/Placement"]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(656, 597)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_4mqri")
+
+[node name="ButtonWasp" type="Sprite2D" parent="CanvasLayer/Placement"]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(752, 597)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_gxhoa")
+
+[node name="Currency" type="Sprite2D" parent="CanvasLayer/Placement"]
+position = Vector2(943, 599)
+scale = Vector2(0.485, 0.485)
+texture = ExtResource("10_3m2xv")
+
+[node name="Remaining" type="Label" parent="CanvasLayer/Placement"]
+layout_mode = 0
+offset_left = 991.0
+offset_top = 577.0
+offset_right = 1088.0
+offset_bottom = 646.0
+text = "100"
+label_settings = SubResource("LabelSettings_ifold")
+
+[node name="Cost" type="Label" parent="CanvasLayer/Placement"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 572.0
+offset_right = 501.0
+offset_bottom = 641.0
+text = "100"
+label_settings = SubResource("LabelSettings_ifold")
+
+[node name="Win" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 514.0
+offset_top = 213.0
+offset_right = 554.0
+offset_bottom = 253.0
+
+[node name="Continue" type="Sprite2D" parent="CanvasLayer/Win"]
+position = Vector2(80, 161)
+texture = ExtResource("19_t8nxf")
+
+[node name="YouWin" type="Sprite2D" parent="CanvasLayer/Win"]
+position = Vector2(39, 49)
+scale = Vector2(0.599074, 0.599074)
+texture = ExtResource("19_fko6k")
+
+[node name="Lose" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 534.0
+offset_top = 222.0
+offset_right = 574.0
+offset_bottom = 262.0
+
+[node name="YouLose" type="Sprite2D" parent="CanvasLayer/Lose"]
+position = Vector2(30, 56)
+scale = Vector2(0.583565, 0.583565)
+texture = ExtResource("19_hcnxe")
+
+[node name="Retry" type="Sprite2D" parent="CanvasLayer/Lose"]
+position = Vector2(34, 157)
+texture = ExtResource("22_bi7b0")
+
+[node name="Coordinator" type="Node3D" parent="." node_paths=PackedStringArray("cam", "label_cost", "label_remaining", "placement_ui", "win_ui", "lose_ui")]
 script = ExtResource("6_xgdn4")
 cam = NodePath("../Camera3D")
-spawn_list = Array[PackedScene]([ExtResource("4_hhxht"), ExtResource("5_2lvki"), ExtResource("6_fjdlm")])
-enemy_group_list = Array[PackedScene]([ExtResource("6_fdwi7")])
+spawn_list = Array[ExtResource("2_gpwaw")]([SubResource("Resource_8ghwu"), SubResource("Resource_s8mmk"), SubResource("Resource_u6yf7")])
+enemy_group_list = Array[ExtResource("6_65rgo")]([SubResource("Resource_j0hu7"), SubResource("Resource_21fkl"), SubResource("Resource_kfdyc"), SubResource("Resource_dyc5a"), SubResource("Resource_yn3n6"), SubResource("Resource_pnxhi"), SubResource("Resource_yo3vf"), SubResource("Resource_gyajr"), SubResource("Resource_bvwi0"), SubResource("Resource_acqn0")])
+label_cost = NodePath("../CanvasLayer/Placement/Cost")
+label_remaining = NodePath("../CanvasLayer/Placement/Remaining")
+placement_ui = NodePath("../CanvasLayer/Placement")
+win_ui = NodePath("../CanvasLayer/Win")
+lose_ui = NodePath("../CanvasLayer/Lose")
 
 [node name="PlacementPlane" type="MeshInstance3D" parent="Coordinator"]
 transform = Transform3D(2.37055, 0, 0, 0, 1, 0, 0, 0, 2.00591, 0.0118084, -0.0147629, 15.039)
@@ -72,33 +276,12 @@ shape = SubResource("BoxShape3D_nwhtb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0189056, -0.067688, -0.075386)
 
 [node name="EnemyGroupOrigin" type="Node3D" parent="Coordinator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -25)
 
-[node name="Environment" parent="." instance=ExtResource("7_r0nmv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.104, -0.25898, 0.0169678)
+[node name="Sounds" type="Node" parent="Coordinator"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="PlacementSound" type="AudioStreamPlayer" parent="Coordinator/Sounds"]
+stream = ExtResource("16_2br1e")
 
-[node name="UiCompartement" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("9_tjoet")
-
-[node name="ButtonBee" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.211765)
-position = Vector2(410, 598)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_4mw8d")
-
-[node name="ButtonBumbleBee" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.211765)
-position = Vector2(575.3, 597.3)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("11_4mqri")
-
-[node name="ButtonWasp" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.211765)
-position = Vector2(746.3, 597.3)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("12_gxhoa")
+[node name="SwarmFight_ENV01_0010" parent="." instance=ExtResource("31_cw7e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5503, 0, 0)

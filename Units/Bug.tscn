@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhnwxtdnnlwtq"]
+[gd_scene load_steps=6 format=3 uid="uid://dhnwxtdnnlwtq"]
 
 [ext_resource type="Script" path="res://Units/bug.gd" id="1_vsj2o"]
+[ext_resource type="AudioStream" uid="uid://b57x0qnptor3y" path="res://Sounds/hit.mp3" id="2_xjhlg"]
+[ext_resource type="AudioStream" uid="uid://bkudqvrubnoal" path="res://Sounds/deathSound.mp3" id="3_bwtdb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qrya2"]
 radius = 5.0
@@ -10,6 +12,13 @@ radius = 5.0
 [node name="Bee" type="Node3D"]
 transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0, 0, 0)
 script = ExtResource("1_vsj2o")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xjhlg")
+volume_db = -16.394
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bwtdb")
 
 [node name="Detector" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0227547, -0.0154161, -0.00633526)

@@ -5,14 +5,20 @@ class_name Bee
 @export var alignment_factor := 0.1
 @export var cohesion_factor := 1.0
 
+func process_targeting():
+	if !is_instance_valid(target) || target.state != State.Active:
+		target = null
+	if target == null:
+		coord.select_random_target(self, func(t): return t is Bee || t is Bumblebee)
 
-func process_movement(delta):
-	var collision_nodes = detector.get_overlapping_areas().map(func(t): return t.get_parent())
+
+func process_movement(delta: float) -> void:
+	var collision_nodes := detector.get_overlapping_areas().map(func(t: Area3D) -> Node: return t.get_parent())
 	
 	var bees_around: Array[Bee]
 	bees_around.assign(
 		collision_nodes
-			.filter(func(t): return (
+			.filter(func(t: Bug) -> bool: return (
 					t is Bee &&
 					t != self &&
 					t.team == team
@@ -26,7 +32,7 @@ func process_movement(delta):
 		var cohesion_position := Vector3.ZERO
 
 		for other in bees_around:
-			var diff = position - other.position
+			var diff := position - other.position
 			if diff != Vector3.ZERO:
 				separation_velocity += diff.normalized() / diff.length()
 			alignment_velocity += other.velocity.normalized()
@@ -41,12 +47,10 @@ func process_movement(delta):
 		cohesion_position /= bees_around.size()
 		var cohesion_velocity := (cohesion_position - position).normalized() * cohesion_factor;
 
-		DebugDraw.draw_line_3d(global_position, global_position + separation_velocity, Color(1, 0, 0))
-		DebugDraw.draw_line_3d(global_position, global_position + alignment_velocity, Color(0, 1, 0))
-		DebugDraw.draw_line_3d(global_position, global_position + cohesion_velocity, Color(0, 0, 1))
+		#DebugDraw.draw_line_3d(global_position, global_position + separation_velocity, Color(1, 0, 0))
+		#DebugDraw.draw_line_3d(global_position, global_position + alignment_velocity, Color(0, 1, 0))
+		#DebugDraw.draw_line_3d(global_position, global_position + cohesion_velocity, Color(0, 0, 1))
 
 		velocity += separation_velocity + alignment_velocity + cohesion_velocity
 
 	super(delta)
-
-

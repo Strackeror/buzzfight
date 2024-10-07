@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xhavmh5dpgj5"]
+
+[ext_resource type="PackedScene" uid="uid://c0evccu3pmnlw" path="res://Units/Prefabs/Bumblebee/BumbleBeeBad.tscn" id="1_pijha"]
+
+[node name="SingleBumbleBee" type="Node3D"]
+
+[node name="Bee" parent="." instance=ExtResource("1_pijha")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.173518, 0, 0.198229)

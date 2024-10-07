@@ -6,12 +6,12 @@ extends Camera3D
 @export_range(0, 10, 0.01) var speed_scale: float = 1.17
 @export_range(1, 100, 0.1) var boost_speed_multiplier: float = 3.0
 
-@onready var _velocity = default_velocity
+@onready var _velocity := default_velocity
 
 func _enter_tree() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if not current:
 		return
 		
@@ -27,18 +27,23 @@ func _input(event):
 				if event.pressed:
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if not current:
 		return
 		
-	var direction = Vector3(
+	var direction := Vector3(
 		float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A)),
 		float(Input.is_physical_key_pressed(KEY_E)) - float(Input.is_physical_key_pressed(KEY_Q)),
 		float(Input.is_physical_key_pressed(KEY_S)) - float(Input.is_physical_key_pressed(KEY_W))
 	).normalized()
 	
-	var velocity = _velocity;
+	var speed := _velocity;
 	if Input.is_physical_key_pressed(KEY_SHIFT): # boost
-		velocity *= boost_speed_multiplier
+		speed *= boost_speed_multiplier
 	
-	translate(direction * velocity * delta)
+	var old_pos := position
+	translate(direction * speed * delta)
+	position.y = clamp(position.y, 4, 20)
+
+	if position.length() > 50:
+		position = old_pos

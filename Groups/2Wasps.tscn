@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj571ebhsm1a8"]
+
+[ext_resource type="PackedScene" uid="uid://bn6fjovhjgfuj" path="res://Units/Prefabs/Wasp/WaspBad.tscn" id="1_o6d7c"]
+
+[node name="2Wasps" type="Node3D"]
+
+[node name="Bee" parent="." instance=ExtResource("1_o6d7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86878, 0, -0.272793)
+attack = 6.0
+
+[node name="Bee2" parent="." instance=ExtResource("1_o6d7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27096, 0, -0.130736)
+attack = 6.0

@@ -1,0 +1,197 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpsuo2kmuowmu"]
+
+[ext_resource type="PackedScene" uid="uid://dd5ojvw1x6ey6" path="res://Units/Prefabs/Bee/BeeBad.tscn" id="1_5ioaa"]
+
+[node name="10Bees" type="Node3D"]
+
+[node name="Bee2" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee3" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee4" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee5" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee6" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee7" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee8" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee9" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee10" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee11" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee12" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee13" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee14" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee15" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee16" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee17" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee18" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee19" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee20" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee21" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee22" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee23" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee24" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee25" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee26" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee27" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee28" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee29" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee30" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee31" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee32" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee33" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee34" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee35" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee36" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee37" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee38" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee39" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee40" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee41" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee42" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee43" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee44" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee45" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee46" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee47" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee48" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee49" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee50" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee51" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee52" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee53" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee54" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee55" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee56" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee57" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee58" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee59" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee60" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee61" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee62" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee63" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee64" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)
+
+[node name="Bee65" parent="." instance=ExtResource("1_5ioaa")]
+transform = Transform3D(0.999355, 0, 0, 0, 0.999355, 0, 0, 0, 0.999355, 0.157337, 0, -0.209359)

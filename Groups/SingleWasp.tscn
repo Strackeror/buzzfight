@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://brqptqfe5ilgj"]
+
+[ext_resource type="PackedScene" uid="uid://bn6fjovhjgfuj" path="res://Units/Prefabs/Wasp/WaspBad.tscn" id="1_7pk4w"]
+
+[node name="SingleWasp" type="Node3D"]
+
+[node name="Bee" parent="." instance=ExtResource("1_7pk4w")]
+transform = Transform3D(1, 0, 0, 0, 0.999996, -0.00286234, 0, 0.00286234, 0.999996, -0.192643, 1.19209e-07, -0.468252)
